@@ -2,7 +2,7 @@
 
 A mobile-first campaign landing page for Morrow Cafe in Sector 104, Noida. The page promotes **Rs 150 off a next visit**, explains how to claim it, and returns a mock claim code from a Next.js Route Handler.
 
-**Live demo:** https://your-deployed-url.vercel.app
+**Live demo:** https://morrowcafe.vercel.app/
 
 ## Stack and reasoning
 
