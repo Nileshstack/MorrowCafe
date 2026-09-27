@@ -22,17 +22,17 @@ export default function Home() {
               sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) 43vw, min(41vw, 527px)"
               src="/morrow-cafe.jpg"
             />
-            <figcaption className="absolute bottom-3 left-3 bg-cafe-paper/95 px-3 py-2 text-xs font-semibold text-cafe-espresso sm:bottom-5 sm:left-5">
+            <figcaption className="absolute left-3 top-3 bg-cafe-paper/95 px-2 py-1.5 text-[11px] font-semibold text-cafe-espresso sm:left-4 sm:top-4 sm:px-3 sm:py-2 sm:text-xs lg:bottom-5 lg:left-5 lg:top-auto lg:px-2 lg:py-1.5 lg:text-[11px] xl:px-3 xl:py-2 xl:text-xs">
               Poured fresh in Sector 104
             </figcaption>
-            <div className="absolute bottom-3 right-3 max-w-[calc(100%-1.5rem)] border border-cafe-paper/70 bg-cafe-paper/95 px-3 py-2 text-cafe-espresso shadow-md sm:bottom-5 sm:right-5 sm:px-4 sm:py-3">
-              <p className="whitespace-nowrap text-sm font-bold sm:text-base">
+            <div className="absolute bottom-3 right-3 max-w-[calc(100%-1.5rem)] border border-cafe-paper/70 bg-cafe-paper/95 px-2 py-1.5 text-cafe-espresso shadow-md sm:bottom-4 sm:right-4 sm:px-2.5 sm:py-2 lg:bottom-5 lg:right-5 xl:px-4 xl:py-3">
+              <p className="whitespace-nowrap text-xs font-bold sm:text-sm xl:text-base">
                 <span aria-hidden="true" className="mr-1 text-cafe-terracotta">
                   ★
                 </span>
                 4.8 · 1,200+ reviews
               </p>
-              <p className="mt-0.5 text-[11px] text-cafe-coffee sm:text-xs">
+              <p className="mt-0.5 text-[10px] text-cafe-coffee sm:text-[11px] xl:text-xs">
                 Loved by your neighbourhood
               </p>
             </div>
