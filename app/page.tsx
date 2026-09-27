@@ -1,69 +1,237 @@
 import Image from "next/image";
+import { FilePenLine, Store, Ticket } from "lucide-react";
+import { ClaimForm } from "@/components/claim-form";
+import { RevealSection } from "@/components/reveal-section";
+import { SiteHeader } from "@/components/site-header";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <>
+      <SiteHeader />
+      <main className="bg-cafe-cream" id="home">
+        <section
+          aria-labelledby="offer-heading"
+          className="mx-auto grid max-w-[1280px] gap-6 px-5 py-6 sm:px-8 md:grid-cols-[1fr_0.9fr] md:items-center md:gap-8 md:px-8 lg:gap-14 lg:px-14 lg:py-10"
+        >
+          <figure className="relative aspect-[1.55] w-full overflow-hidden rounded-sm bg-cafe-sage/30 md:order-2 md:aspect-[0.9] lg:aspect-[0.94]">
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+              alt="Hands holding three freshly prepared coffees together at a café."
+              className="object-cover object-center"
+              fill
+              priority
+              sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) 43vw, min(41vw, 527px)"
+              src="/morrow-cafe.jpg"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            <figcaption className="absolute bottom-3 left-3 bg-cafe-paper/95 px-3 py-2 text-xs font-semibold text-cafe-espresso sm:bottom-5 sm:left-5">
+              Poured fresh in Sector 104
+            </figcaption>
+            <div className="absolute bottom-3 right-3 max-w-[calc(100%-1.5rem)] border border-cafe-paper/70 bg-cafe-paper/95 px-3 py-2 text-cafe-espresso shadow-md sm:bottom-5 sm:right-5 sm:px-4 sm:py-3">
+              <p className="whitespace-nowrap text-sm font-bold sm:text-base">
+                <span aria-hidden="true" className="mr-1 text-cafe-terracotta">
+                  ★
+                </span>
+                4.8 · 1,200+ reviews
+              </p>
+              <p className="mt-0.5 text-[11px] text-cafe-coffee sm:text-xs">
+                Loved by your neighbourhood
+              </p>
+            </div>
+          </figure>
+
+          <div className="rise-in flex flex-col justify-center md:order-1">
+            <p className="mb-2 text-xs font-bold uppercase text-cafe-terracotta">
+              A little thank-you for your next visit
+            </p>
+            <h2
+              className="font-display text-5xl font-bold leading-none text-cafe-espresso md:text-6xl lg:text-7xl"
+              id="offer-heading"
+            >
+              ₹150 OFF
+            </h2>
+            <p className="mt-3 text-sm leading-5 text-cafe-coffee">
+              A little extra joy with your next coffee.
+            </p>
+            <a
+              className="mt-5 flex min-h-13 w-full items-center justify-center gap-3 rounded-sm bg-cafe-terracotta px-5 py-3 text-base font-bold text-cafe-paper transition-colors hover:bg-cafe-espresso focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cafe-espresso sm:w-fit sm:min-w-64"
+              href="#claim"
+            >
+              Claim ₹150 OFF
+              <span aria-hidden="true">↗</span>
+            </a>
+            <p className="mt-3 text-xs text-cafe-coffee/80">
+              Your next coffee break, made better.
+            </p>
+            <div className="mt-5 inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-cafe-coffee/25 bg-cafe-paper/70 px-4 py-2 text-xs font-semibold text-cafe-espresso sm:text-sm">
+              <svg
+                aria-hidden="true"
+                className="h-4 w-4 shrink-0 text-cafe-terracotta"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M5 8V6.5a5 5 0 0 1 10 0V8M4 8h12l-1 9H5L4 8Z"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M8 11.5c.7.7 1.3.7 2 0s1.3-.7 2 0"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="1.5"
+                />
+              </svg>
+              <span>500+ coffees claimed</span>
+            </div>
+          </div>
+        </section>
+
+        <RevealSection
+          aria-labelledby="how-heading"
+          className="bg-cafe-paper px-5 py-12 sm:px-8 sm:py-16 lg:px-14"
+          id="how-it-works"
+        >
+          <div className="mx-auto max-w-[1120px]">
+            <p className="text-xs font-bold uppercase text-cafe-terracotta">
+              From here to your next coffee
+            </p>
+            <h2
+              className="mt-2 font-display text-3xl text-cafe-espresso sm:text-4xl"
+              id="how-heading"
+            >
+              How it works
+            </h2>
+            <ol className="mt-8 grid gap-7 sm:grid-cols-3 sm:gap-8">
+              <li className="border-t border-cafe-coffee/25 pt-4">
+                <div aria-hidden="true" className="flex items-end gap-2">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-cafe-sage/20 text-cafe-terracotta">
+                    <FilePenLine size={18} strokeWidth={1.8} />
+                  </span>
+                  <span className="pb-0.5 text-xs font-bold text-cafe-terracotta">
+                    01
+                  </span>
+                </div>
+                <h3 className="mt-3 text-base font-bold text-cafe-espresso">
+                  Claim your offer
+                </h3>
+                <p className="mt-1 text-sm leading-6 text-cafe-coffee">
+                  Add your name and mobile number to get your claim code.
+                </p>
+              </li>
+              <li className="border-t border-cafe-coffee/25 pt-4">
+                <div aria-hidden="true" className="flex items-end gap-2">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-cafe-sage/20 text-cafe-terracotta">
+                    <Ticket size={18} strokeWidth={1.8} />
+                  </span>
+                  <span className="pb-0.5 text-xs font-bold text-cafe-terracotta">
+                    02
+                  </span>
+                </div>
+                <h3 className="mt-3 text-base font-bold text-cafe-espresso">
+                  Keep your code
+                </h3>
+                <p className="mt-1 text-sm leading-6 text-cafe-coffee">
+                  Your ₹150 OFF code will appear as soon as you claim.
+                </p>
+              </li>
+              <li className="border-t border-cafe-coffee/25 pt-4">
+                <div aria-hidden="true" className="flex items-end gap-2">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-cafe-sage/20 text-cafe-terracotta">
+                    <Store size={18} strokeWidth={1.8} />
+                  </span>
+                  <span className="pb-0.5 text-xs font-bold text-cafe-terracotta">
+                    03
+                  </span>
+                </div>
+                <h3 className="mt-3 text-base font-bold text-cafe-espresso">
+                  Drop by Morrow
+                </h3>
+                <p className="mt-1 text-sm leading-6 text-cafe-coffee">
+                  Show the code at our Sector 104 counter on your next visit.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </RevealSection>
+
+        <RevealSection
+          aria-labelledby="claim-heading"
+          className="mx-auto max-w-[720px] px-5 py-12 sm:px-8 sm:py-16 md:px-6 lg:py-20"
+          id="claim"
+        >
+          <div className="border-y border-cafe-coffee/20 py-8 sm:py-10 md:border md:bg-cafe-paper md:px-8 md:py-9 lg:px-10 lg:py-10">
+            <p className="text-xs font-bold uppercase text-cafe-terracotta">
+              One quick step
+            </p>
+            <h2
+              className="mt-2 font-display text-3xl text-cafe-espresso sm:text-4xl"
+              id="claim-heading"
+            >
+              Get your ₹150 claim code
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-cafe-coffee">
+              Enter your details to reveal your code.
+            </p>
+            <ClaimForm />
+          </div>
+        </RevealSection>
       </main>
-    </div>
+      <footer
+        aria-label="Morrow Café information"
+        className="bg-cafe-espresso px-5 pb-5 pt-10 text-cafe-paper sm:px-8 sm:pt-12 lg:px-14"
+        id="visit"
+      >
+        <div className="mx-auto max-w-[1120px]">
+          <div className="grid gap-8 pb-9 sm:grid-cols-2 md:grid-cols-3 md:gap-10 md:pb-10">
+            <section aria-labelledby="footer-cafe-heading">
+              <h2
+                className="font-display text-2xl text-cafe-paper"
+                id="footer-cafe-heading"
+              >
+                Morrow Café
+              </h2>
+              <p className="mt-2 text-sm text-cafe-paper/75">
+                Slow mornings. Good coffee.
+              </p>
+              <address className="mt-3 text-sm not-italic leading-6 text-cafe-paper/85">
+                Sector 104, Noida
+              </address>
+            </section>
+
+            <section aria-labelledby="footer-hours-heading">
+              <h2
+                className="text-xs font-bold uppercase text-cafe-paper/60"
+                id="footer-hours-heading"
+              >
+                Opening hours
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-cafe-paper/90">
+                Mon–Sun
+                <br />8 AM – 10 PM
+              </p>
+            </section>
+
+            <RevealSection aria-labelledby="footer-terms-heading">
+              <h2
+                className="text-xs font-bold uppercase text-cafe-paper/60"
+                id="footer-terms-heading"
+              >
+                Campaign terms
+              </h2>
+              <p className="mt-3 text-xs leading-5 text-cafe-paper/65">
+                Valid at Morrow Café, Sector 104, Noida. One claim per guest.
+                Show your code before billing. Cannot be exchanged for cash or
+                combined with another offer.
+              </p>
+            </RevealSection>
+          </div>
+
+          <div className="border-t border-cafe-paper/20 pt-4 text-center text-xs text-cafe-paper/60 md:text-left">
+            © 2026 Morrow Café
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }
